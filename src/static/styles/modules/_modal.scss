@@ -1,0 +1,32 @@
+.modal-canvas {
+  background-color: rgba(palette(black), 0);
+  overflow-y: scroll;
+  transform: translateY(-100%);
+  transition: background-color 0.3s ease-in;
+}
+
+.modal-canvas.is-active {
+  background-color: rgba(palette(black), 0.5);
+  transform: translateY(0);
+}
+
+.modal {
+  max-width: 800px;
+  opacity: 0;
+  transform: translateY(3.125rem);
+  transition:
+    opacity 0.3s ease-in 0.2s,
+    transform 0.3s ease-in 0.1s;
+}
+
+.modal-canvas.is-active .modal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modal__close {
+  top: 50%;
+  right: 20px;
+  outline: none;
+  transform: translateY(-50%);
+}

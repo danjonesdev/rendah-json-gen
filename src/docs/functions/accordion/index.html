@@ -1,0 +1,67 @@
+{% extends '../../_layouts/master.html' %}
+
+{% set title = 'Accordion' %}
+
+{% block content %}
+
+  {% include '../../_partials/subnav.html' with { type: 'functions' } %}
+
+  <section class="section  rel  pa5">
+    <header class="mb5">
+      <h1 class="f5  fw7  lh-title  mb3">
+        {{title}}
+      </h1>
+
+      <div class="measure-wide  f4  fw3  lh-copy">
+        <p class="f3">
+          Basic accordion functional component and markup. Standard behaviour has one item active at any time though all can be classed as inactive. The below markup must be used as a base for the accordion as the JavaScript module relies on the {% include '../../_partials/code-snippet.html' with { language: 'javascript', body: 'firstElementChild' } %} selector.
+        </p>
+      </div>
+    </header>
+
+    <div class="mw7  mb3">
+      <div class="accordion" id="js-accordion">
+        {% include '../../_partials/accordion-item.html' with {
+          title: 'Accordion Title',
+          body: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ornare arcu dui vivamus arcu felis bibendum. Faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis aliquam. </p><p>Ultrices tincidunt arcu non sodales neque sodales ut etiam. Eget dolor morbi non arcu risu quis varius. Ornare arcu dui vivamus arcu felis bibendum. Faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis aliquam. Eget dolor morbi non arcu risu quis varius.</p>'
+        } %}
+
+        {% include '../../_partials/accordion-item.html' with {
+          title: 'Accordion Title',
+          body: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ornare arcu dui vivamus arcu felis bibendum. Faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis aliquam. </p><p>Ultrices tincidunt arcu non sodales neque sodales ut etiam. Eget dolor morbi non arcu risu quis varius. Ornare arcu dui vivamus arcu felis bibendum. Faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis aliquam. Eget dolor morbi non arcu risu quis varius.</p>'
+        } %}
+      </div>
+    </div>
+
+    <div class="mw7">
+{% include '../../_partials/preformatted.html' with { language: 'markup',
+body: '<div class="accordion" id="js-accordion">
+  <div class="accordion-item  mb3  ba  bc-almost-white  js-accordion-item">
+    <div class="accordion-header  rel  pv3  ph4">
+      <h3 class="f4  fw7  lh-copy  mb0">
+        ...
+      </h3>
+
+      <div class="accordion-indicator  abs">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="9" viewBox="0 0 14 9">
+          <path fill="none" stroke="#1a3782" stroke-width="2" d="M.83 1.17l6.2 6.16 6.3-6.16"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="accordion-reveal  over-hidden  js-accordion-reveal">
+      <div class="measure-wide  pa4  f5  fw4  lh-copy">
+        ...
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item  mb3  ba  bc-almost-white  js-accordion-item">
+    ...
+  </div>
+</div>'
+} %}
+    </div>
+  </section>
+
+{% endblock %}

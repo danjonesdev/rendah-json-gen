@@ -1,0 +1,89 @@
+{% extends '../../_layouts/master.html' %}
+
+{% set title = 'Tabs' %}
+
+{% block content %}
+
+  {% include '../../_partials/subnav.html' with { type: 'functions' } %}
+
+  <section class="section  rel  pa5">
+    <header class="mb5">
+      <h1 class="f5  fw7  lh-title  mb3">
+        {{title}}
+      </h1>
+
+      <div class="measure-wide  f4  fw3  lh-copy">
+        <p class="f3">
+          Basic tab functionality that relies on the data attributes {% include '../../_partials/code-snippet.html' with { language: 'html', body: 'data-tab-target' } %} for the navigation items and {% include '../../_partials/code-snippet.html' with { language: 'html', body: 'data-tab-item' } %} for the content that will be toggled.
+        </p>
+
+        <p>
+          Could be extended for example to include animation when the content is switched but by default toggles the display property.
+        </p>
+      </div>
+    </header>
+
+    <div class="mw7  mb3">
+      <div class="tabs" id="js-tabs">
+        <nav class="tab-nav  flex">
+          <div class="tab-nav__item  flex-grow  pa3  tac  ba  cp  is-active" data-tab-target="1">
+            Tab 1
+          </div>
+
+          <div class="tab-nav__item  flex-grow  pa3  tac  ba  cp" data-tab-target="2">
+            Tab 2
+          </div>
+        </nav>
+
+        <div class="tab__item  rel  bg-almost-white  is-active" data-tab-item="1">
+          <div class="measure-wide  pa4  f5  fw4  lh-copy">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </div>
+
+          <div class="abs  bottom  right  pa4  f1  fw7  lh-title  moon-grey">
+            1
+          </div>
+        </div>
+
+        <div class="tab__item  rel  bg-almost-white" data-tab-item="2">
+          <div class="measure-wide  pa4  f5  fw4  lh-copy">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </div>
+
+          <div class="abs  bottom  right  pa4  f1  fw7  lh-title  moon-grey">
+            2
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mw7">
+{% include '../../_partials/preformatted.html' with { language: 'markup',
+body: '<div class="tabs" id="js-tabs">
+  <nav class="tab-nav  flex">
+    <div class="tab-nav__item  flex-grow  pa3  tac  ba  cp  is-active" data-tab-target="1">
+      Tab 1
+    </div>
+
+    <div class="tab-nav__item  flex-grow  pa3  tac  ba  cp" data-tab-target="2">
+      Tab 2
+    </div>
+  </nav>
+
+  <div class="tab__item  rel  bg-almost-white  is-active" data-tab-item="1">
+    ...
+  </div>
+
+  <div class="tab__item  rel  bg-almost-white" data-tab-item="2">
+    ...
+  </div>
+</div>'
+} %}
+    </div>
+  </section>
+
+{% endblock %}

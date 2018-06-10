@@ -1,0 +1,65 @@
+{% extends '../../_layouts/master.html' %}
+
+{% set title = 'Max Width' %}
+
+{% block content %}
+
+  {% include '../../_partials/subnav.html' with { type: 'layout' } %}
+
+  <section class="section  rel  pa5">
+    <header class="mb5">
+      <h1 class="f5  fw7  lh-title  mb3">
+        {{title}}
+      </h1>
+
+      <div class="measure-wide  f4  fw3  lh-copy">
+        <p class="f3">
+          The max width module contains both a ten-step scale based on powers of two as well as the ability to constrain element widths to a maximum of 100%.
+        </p>
+
+        <p>
+          Max widths can be combined with widths to ensure that your content doesn't get too wide on larger monitors. Max widths can also help keep embedded media within the canvas. As they are fluid across ranges of screen widths, max widths are extremely useful when trying to keep a design responsive.
+        </p>
+      </div>
+    </header>
+
+    <div class="max-width">
+      <div class="max-width__section  mb5">
+        <div class="measure-wide  fw3  lh-copy">
+          <p class="f6  ttu  mb1">
+            Scale
+          </p>
+        </div>
+
+        {% for i in 1..9 %}
+          <div class="max-width__item">
+            <div class="mw{{i}}  pa2  mb1  bg-light-grey">
+              <p class="f6  lh-copy  grey  mb0">
+                mw{{i}}
+              </p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="max-width__section">
+        <div class="measure-wide  fw3  lh-copy">
+          <p class="f6  ttu  mb1">
+            Percentage
+          </p>
+        </div>
+
+        {% for i in 1..10 %}
+          <div class="max-width__item">
+            <div class="mw-{{i}}0  pa2  mb1  bg-light-grey">
+              <p class="f6  lh-copy  grey  mb0">
+                mw-{{i}}0
+              </p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

@@ -1,0 +1,145 @@
+{% extends '../../_layouts/master.html' %}
+
+{% set title = 'Spacing' %}
+
+{% block content %}
+
+  {% include '../../_partials/subnav.html' with { type: 'layout' } %}
+
+  <section class="section  rel  pa5">
+    <header class="mb5">
+      <h1 class="f5  fw7  lh-title  mb3">
+        {{title}}
+      </h1>
+
+      <div class="measure-wide  f4  fw3  lh-copy">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+    </header>
+
+    <div class="spacing  mw5">
+      <div class="spacing__section  mb5">
+        <div class="measure-wide  fw3  lh-copy">
+          <p class="f6  ttu  mb1">
+            Padding all
+          </p>
+
+          <p class="f5  mb4">
+            {% for i in 1..7 %}
+              pa{{i}}{% if loop.index < loop | length -1 %}, {% endif %}
+            {% endfor %}
+          </p>
+        </div>
+
+        {% for i in 1..7 %}
+          <div class="spacing__item">
+            <div class="pa{{i}}  dib  mb1  white  bg-black">
+              <span class="mono  f6  lh-copy">
+                pa{{i}}
+              </span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="spacing__section  mb5">
+        <div class="measure-wide  fw3  lh-copy">
+          <p class="f6  ttu  mb1">
+            Padding vertical
+          </p>
+
+          <p class="f5  mb4">
+            {% for i in 1..7 %}
+              pv{{i}}{% if loop.index < loop | length -1 %}, {% endif %}
+            {% endfor %}
+          </p>
+        </div>
+
+        {% for i in 1..7 %}
+          <div class="spacing__item">
+            <div class="pv{{i}}  dib  mb1  white  bg-black">
+              <span class="mono  f6  lh-copy">
+                pv{{i}}
+              </span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="spacing__section  mb5">
+        <div class="measure-wide  fw3  lh-copy">
+          <p class="f6  ttu  mb1">
+            Padding horizontal
+          </p>
+
+          <p class="f5  mb4">
+            {% for i in 1..7 %}
+              ph{{i}}{% if loop.index < loop | length -1 %}, {% endif %}
+            {% endfor %}
+          </p>
+        </div>
+
+        {% for i in 1..7 %}
+          <div class="spacing__item">
+            <div class="ph{{i}}  dib  mb1  white  bg-black">
+              <span class="mono  f6  lh-copy">
+                ph{{i}}
+              </span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="spacing__section  mb5">
+        <div class="measure-wide  fw3  lh-copy">
+          <p class="f6  ttu  mb1">
+            Padding left
+          </p>
+
+          <p class="f5  mb4">
+            {% for i in 1..7 %}
+              pl{{i}}{% if loop.index < loop | length -1 %}, {% endif %}
+            {% endfor %}
+          </p>
+        </div>
+
+        {% for i in 1..7 %}
+          <div class="spacing__item">
+            <div class="pl{{i}}  dib  mb1  white  bg-black">
+              <span class="mono  f6  lh-copy">
+                pl{{i}}
+              </span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="spacing__section">
+        <div class="measure-wide  fw3  lh-copy">
+          <p class="f6  ttu  mb1">
+            Padding right
+          </p>
+
+          <p class="f5  mb4">
+            {% for i in 1..7 %}
+              pr{{i}}{% if loop.index < loop | length -1 %}, {% endif %}
+            {% endfor %}
+          </p>
+        </div>
+
+        {% for i in 1..7 %}
+          <div class="spacing__item">
+            <div class="pr{{i}}  dib  mb1  white  bg-black">
+              <span class="mono  f6  lh-copy">
+                pr{{i}}
+              </span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

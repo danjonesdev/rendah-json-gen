@@ -1,0 +1,34 @@
+{% extends '../../_layouts/master.html' %}
+
+{% set title = 'Modal' %}
+
+{% block content %}
+
+  {% include '../../_partials/subnav.html' with { type: 'functions' } %}
+
+  <section class="section  rel  pa5">
+    <header class="mb5">
+      <h1 class="f5  fw7  lh-title  mb3">
+        {{title}}
+      </h1>
+
+      <div class="measure-wide  f4  fw3  lh-copy">
+        <p class="f3">
+          Basic modal functionality based on the attributes {% include '../../_partials/code-snippet.html' with { language: 'html', body: 'data-modal-id' } %} and {% include '../../_partials/code-snippet.html' with { language: 'html', body: 'data-modal-target' } %}. Can be dismissed by the inner close button,  clicking outside of the active modal canvas or by pressing escape.
+        </p>
+      </div>
+    </header>
+
+    <div class="flex">
+      <div class="pr4">
+        <button
+          class="btn  pv3  ph4  f5  white  bg-black  bn"
+          type="button"
+          data-modal-target="example">
+          Open modal
+        </button>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

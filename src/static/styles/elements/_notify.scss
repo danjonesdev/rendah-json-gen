@@ -1,0 +1,8 @@
+.notify {
+  transform: translateY(100%);
+  transition: transform 0.2s ease-in;
+}
+
+.notify.is-active {
+  transform: translateY(0);
+}
