@@ -66,11 +66,16 @@
 @import 'modules/modal';
 @import 'modules/tabs';
 
+body {
+
+}
 
 .section {
-  @extend .br4;
-  @extend .bg-light-grey;
-  @extend .shadow1;
+  @extend .br3;
+  @extend .bg-white;
+  @extend .ba;
+  @extend .bc-light-silver;
+  @extend .shadow2;
   @extend .pa3;
   @extend .mv3;
 }

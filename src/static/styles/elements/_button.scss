@@ -1,7 +1,14 @@
 .btn {
   display: inline-block;
   cursor: pointer;
-  border-radius: 20px;
+  @extend .br3;
+  @extend .bg-white;
+  @extend .ba;
+  @extend .bc-light-silver;
+  @extend .shadow2;
+  @extend .ph3;
+  @extend .pv2;
+  @extend .mv3;
 }
 
 .btn:disabled {
@@ -21,13 +28,3 @@
 //
 //   }
 // }
-
-.btn--addSection {
-  background: palette(grey);
-  color: white;
-}
-
-.btn--generate {
-  background: palette(grey);
-  color: white;
-}
