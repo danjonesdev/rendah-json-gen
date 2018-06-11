@@ -13,14 +13,13 @@ const jsonGen = {
   appendSection() {
     const selectSection =
     jsonGen.selectSection.options[jsonGen.selectSection.selectedIndex].value;
-    console.log(selectSection);
 
     let section;
     switch (selectSection) {
       case 'heading':
         section = `
-          <div data-section="${selectSection}" class="bg-light-grey  pa3  mv2">
-            <p class="pt2  fw6">${selectSection}</p>
+          <div data-section="${selectSection}" class="section">
+            <p class="section__title  pt2  fw6">${selectSection}</p>
             <label>Text</label>
             <input data-input="text" type="text" value="">
           </div>
@@ -28,8 +27,8 @@ const jsonGen = {
         break;
       case 'paragraph':
         section = `
-          <div data-section="${selectSection}" class="bg-light-grey  pa3  mv2">
-            <p class="pt2  fw6">${selectSection}</p>
+          <div data-section="${selectSection}" class="section">
+            <p class="section__title  pt2  fw6">${selectSection}</p>
             <label>Text</label>
             <textarea data-input="text" rows="4" cols="80"></textarea>
           </div>
@@ -37,8 +36,8 @@ const jsonGen = {
         break;
       case 'question':
         section = `
-          <div data-section="${selectSection}" class="bg-light-grey  pa3  mv2">
-            <p class="pt2  fw6">${selectSection}</p>
+          <div data-section="${selectSection}" class="section">
+            <p class="section__title  pt2  fw6">${selectSection}</p>
             <label>Text</label>
             <input data-input="text" type="text" value="">
           </div>
@@ -46,8 +45,8 @@ const jsonGen = {
         break;
       case 'answer':
         section = `
-          <div data-section="${selectSection}" class="bg-light-grey  pa3  mv2">
-            <p class="pt2  fw6">${selectSection}</p>
+          <div data-section="${selectSection}" class="section">
+            <p class="section__title  pt2  fw6">${selectSection}</p>
             <label>Text</label>
             <textarea data-input="text" rows="4" cols="80"></textarea>
           </div>
@@ -55,8 +54,8 @@ const jsonGen = {
         break;
       case 'bulletList':
         section = `
-          <div data-section="${selectSection}" class="bg-light-grey  pa3  mv2">
-            <p class="pt2  fw6">${selectSection}<span class="pl1  fw5">(10 max)</span></p>
+          <div data-section="${selectSection}" class="section">
+            <p class="section__title  pt2  fw6">${selectSection}<span class="pl1  fw5">(10 max)</span></p>
             <label>Text</label>
             <input data-input="text" type="text" value="">
             <label>List</label>
@@ -76,8 +75,8 @@ const jsonGen = {
         break;
       case 'numberedList':
         section = `
-          <div data-section="${selectSection}" class="bg-light-grey  pa3  mv2">
-            <p class="pt2  fw6">${selectSection}<span class="pl1  fw5">(10 max)</span></p>
+          <div data-section="${selectSection}" class="section">
+            <p class="section__title  pt2  fw6">${selectSection}<span class="pl1  fw5">(10 max)</span></p>
             <label>Text</label>
             <input data-input="text" type="text" value="">
             <label>List</label>
@@ -97,8 +96,8 @@ const jsonGen = {
         break;
       case 'soundcloud':
         section = `
-          <div data-section="${selectSection}" class="bg-light-grey  pa3  mv2">
-            <p class="pt2  fw6">${selectSection}</p>
+          <div data-section="${selectSection}" class="section">
+            <p class="section__title  pt2  fw6">${selectSection}</p>
             <label>URL</label>
             <input data-input="url" type="text" value="">
           </div>
@@ -106,8 +105,8 @@ const jsonGen = {
         break;
       case 'youtube':
         section = `
-          <div data-section="${selectSection}" class="bg-light-grey  pa3  mv2">
-            <p class="pt2  fw6">${selectSection}</p>
+          <div data-section="${selectSection}" class="section">
+            <p class="section__title  pt2  fw6">${selectSection}</p>
             <label>URL</label>
             <input data-input="url" type="text" value="">
           </div>
@@ -115,8 +114,8 @@ const jsonGen = {
         break;
       case 'link':
         section = `
-          <div data-section="${selectSection}" class="bg-light-grey  pa3  mv2">
-            <p class="pt2  fw6">${selectSection}</p>
+          <div data-section="${selectSection}" class="section">
+            <p class="section__title  pt2  fw6">${selectSection}</p>
             <label>linkType</label>
             <select data-input="linkType">
               <option value="Soundcloud">Soundcloud</option>
@@ -130,7 +129,7 @@ const jsonGen = {
             <input data-input="text" type="text" value="">
             <br />
             <label>URL</label>
-            <input data-input="url" type="text" value="">
+            <input data-input="url" type="url" value="">
           </div>
         `;
         break;
@@ -142,25 +141,43 @@ const jsonGen = {
 
   generateSection() {
     const dataSections = document.querySelectorAll('[data-section]');
-    let json = '';
+    let json = '{';
 
     for (let i = 0; i < dataSections.length; i += 1) {
       const thisSection = dataSections[i];
       const type = thisSection.getAttribute('data-section');
       let list;
 
+      let blockComma = ',';
+      if ((i + 1) === (dataSections.length)) {
+        blockComma = '';
+      }
+
       switch (type) {
         case 'url':
-          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value}",`;
+          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value}"`;
           break;
         case 'title':
-          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value}",`;
+          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value}"`;
           break;
         case 'description':
-          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value}",`;
+          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value}"`;
           break;
         case 'created':
-          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value}",`;
+          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value}"`;
+          break;
+        case 'img':
+          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value}"`;
+          break;
+        case 'author':
+          const authorSection =
+            thisSection.querySelector('[data-input="select"]').options[thisSection.querySelector('[data-input="select"]').selectedIndex].value;
+          json += `"${type}": "${authorSection}"`;
+          break;
+        case 'category':
+          const categorySection =
+            thisSection.querySelector('[data-input="select"]').options[thisSection.querySelector('[data-input="select"]').selectedIndex].value;
+          json += `"${type}": "${categorySection}"`;
           break;
         case 'heading':
           json += `
@@ -169,7 +186,7 @@ const jsonGen = {
               "type": "${type}",
               "text": "${thisSection.querySelector('[data-input="text"]').value}"
             }
-          },`;
+          }`;
           break;
         case 'paragraph':
           json += `
@@ -178,7 +195,7 @@ const jsonGen = {
               "type": "${type}",
               "text": "${thisSection.querySelector('[data-input="text"]').value}"
             }
-          },`;
+          }`;
           break;
         case 'question':
           json += `
@@ -187,7 +204,7 @@ const jsonGen = {
               "type": "${type}",
               "text": "${thisSection.querySelector('[data-input="text"]').value}"
             }
-          },`;
+          }`;
           break;
         case 'bulletList':
           list = '';
@@ -200,7 +217,6 @@ const jsonGen = {
               list += `"${thisSection.querySelectorAll('[data-input="list"]')[ii].value}"${comma}`;
             }
           }
-
           json += `
           {
             "section": {
@@ -210,7 +226,7 @@ const jsonGen = {
                 ${list}
               ]
             }
-          },`;
+          }`;
           break;
         case 'numberedList':
           list = '';
@@ -233,11 +249,44 @@ const jsonGen = {
                 ${list}
               ]
             }
-          },`;
+          }`;
+          break;
+        case 'soundcloud':
+          json += `
+          {
+            "section": {
+              "type": "${type}",
+              "text": "${thisSection.querySelector('[data-input="url"]').value}"
+            }
+          }`;
+          break;
+        case 'youtube':
+          json += `
+          {
+            "section": {
+              "type": "${type}",
+              "text": "${thisSection.querySelector('[data-input="url"]').value}"
+            }
+          }`;
+          break;
+        case 'link':
+          const linkSection =
+            thisSection.querySelector('[data-input="linkType"]').options[thisSection.querySelector('[data-input="linkType"]').selectedIndex].value;
+          json += `
+          {
+            "section": {
+              "type": "${type}",
+              "linkType": "${linkSection}",
+              "text": "${thisSection.querySelector('[data-input="text"]').value}",
+              "url": "${thisSection.querySelector('[data-input="url"]').value}"
+            }
+          }`;
           break;
         default:
       }
+      json += `${blockComma}`;
     }
+    json += '}';
     console.log(json);
   },
 

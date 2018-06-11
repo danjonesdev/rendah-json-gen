@@ -5,39 +5,66 @@
   <section class="pa5">
     <header class="mb5">
 
-      <div data-section="url" class="bg-light-grey  pa3  mv2">
-        <label>url</label>
+      <div data-section="url" class="section">
+        <p class="section__title  pt2  fw6  di">Article URL</p>
         <input data-input="text" type="text">
       </div>
-      <div data-section="title" class="bg-light-grey  pa3  mv2">
-        <label>title</label>
+      <div data-section="title" class="section">
+        <p class="section__title  pt2  fw6  di">Article Title</p>
         <input data-input="text" type="text">
       </div>
-      <div data-section="description" class="bg-light-grey  pa3  mv2">
-        <label>description</label>
-        <textarea data-input="text" rows="4" cols="80"></textarea>
+      <div data-section="description" class="section">
+        <p class="section__title  pt2  fw6  di">Artice Description</p>
+        <textarea class="mt3  w-100" data-input="text" rows="4" cols="80"></textarea>
       </div>
-      <div data-section="created" class="bg-light-grey  pa3  mv2">
-        <label>created (yyyy-mm-ddT12:00:00.002Z)</label>
+      <div data-section="created" class="section">
+        <p class="section__title  pt2  fw6">Created Date</p>
         <input data-input="text" type="text">
+      </div>
+      <div data-section="author" class="section">
+        <p class="section__title  pt2  fw6  di">Author</p>
+        <select data-input="select">
+          <option value="Dan Jones">Dan Jones</option>
+          <option value="Harry Taylor">Harry Taylor</option>
+          <option value="Dayle Hamers">Dayle Hamers</option>
+          <option value="Kieran May">Kieran May</option>
+          <option value="Sam Langley">Sam Langley</option>
+        </select>
+      </div>
+      <div data-section="img" class="section">
+        <p class="section__title  pt2  fw6  di">Main Image</p>
+        <input data-input="text" type="text">
+      </div>
+      <div data-section="category" class="section">
+        <p class="section__title  pt2  fw6  di">Category</p>
+        <select data-input="select">
+          <option value="Insights">Insights</option>
+          <option value="Interviews">Interviews</option>
+          <option value="News">News</option>
+        </select>
       </div>
 
       <div data-sections-container></div>
 
-      <select data-section-select>
-        <option value="heading">heading</option>
-        <option value="paragraph">paragraph</option>
-        <option value="question">question</option>
-        <option value="answer">answer</option>
-        <option value="bulletList">bulletList</option>
-        <option value="numberedList">numberedList</option>
-        <option value="soundcloud">soundcloud</option>
-        <option value="youtube">youtube</option>
-        <option value="link">link</option>
-      </select>
-      <span data-add-section>add section</span>
+      <div class="fl  tal  w-50  di">
+        <select data-section-select>
+          <option value="heading">heading</option>
+          <option value="paragraph">paragraph</option>
+          <option value="question">question</option>
+          <option value="answer">answer</option>
+          <option value="bulletList">bulletList</option>
+          <option value="numberedList">numberedList</option>
+          <option value="soundcloud">soundcloud</option>
+          <option value="youtube">youtube</option>
+          <option value="link">link</option>
+        </select>
+        <span class="btn  btn--addSection  pv2  ph3  f7  ml2" data-add-section>ADD SECTION</span>
+      </div>
 
-      <span data-generate>generate</span>
+      <div class="fr  tar  w-50  di">
+        <span class="btn  btn--generate  pv2  ph3  f7" data-generate>GENERATE</span>
+      </div>
+
     </header>
   </section>
 

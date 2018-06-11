@@ -1,6 +1,7 @@
 .btn {
   display: inline-block;
   cursor: pointer;
+  border-radius: 20px;
 }
 
 .btn:disabled {
@@ -20,3 +21,13 @@
 //
 //   }
 // }
+
+.btn--addSection {
+  background: palette(grey);
+  color: white;
+}
+
+.btn--generate {
+  background: palette(grey);
+  color: white;
+}

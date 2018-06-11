@@ -65,3 +65,16 @@
 @import 'modules/accordion';
 @import 'modules/modal';
 @import 'modules/tabs';
+
+
+.section {
+  @extend .br4;
+  @extend .bg-light-grey;
+  @extend .shadow1;
+  @extend .pa3;
+  @extend .mv3;
+}
+
+.section__title {
+  padding-right: 10px;
+}
