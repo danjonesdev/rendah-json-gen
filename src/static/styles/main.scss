@@ -117,8 +117,12 @@ select, option, input, textarea {
   box-shadow: 0;
   outline: 0;
   font-size: 15px;
-  min-width: 230px;
+  width: 100%;
   @extend .ba;
   @extend .bc-light-silver;
   @extend .shadow1;
+}
+
+select, option, input {
+  max-width: 250px;
 }
