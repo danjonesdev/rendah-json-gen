@@ -2,32 +2,31 @@
 
 {% block content %}
 
-<div class="ph6-md  ph3  pv2  mw8  center">
+<div class="ph6-md  ph3  pv2  mb6  mw8  center">
 
   <div data-sections-container>
     <section data-section="url" class="section">
-      <span data-remove="url" class="red">x</span>
-      <p class="section__title  pt2  fw6  di">Article URL</p>
+      <p class="section__title">Article URL</p>
       <input data-input="text" type="text">
     </section>
 
     <section data-section="title" class="section">
-      <p class="section__title  pt2  fw6  di">Article Title</p>
+      <p class="section__title">Article Title</p>
       <input data-input="text" type="text">
     </section>
 
     <section data-section="description" class="section">
-      <p class="section__title  pt2  fw6  di">Artice Description</p>
-      <textarea class="mt3  w-100" data-input="text" rows="4" cols="80"></textarea>
+      <p class="section__title">Artice Description</p>
+      <textarea class="w-100" data-input="text" rows="4" cols="80"></textarea>
     </section>
 
     <section data-section="created" class="section">
-      <p class="section__title  pt2  fw6">Created Date</p>
+      <p class="section__title">Created Date</p>
       <input data-input="text" type="text">
     </section>
 
     <section data-section="author" class="section">
-      <p class="section__title  pt2  fw6  di">Author</p>
+      <p class="section__title">Author</p>
       <select data-input="select">
         <option value="Dan Jones">Dan Jones</option>
         <option value="Harry Taylor">Harry Taylor</option>
@@ -38,12 +37,12 @@
     </section>
 
     <section data-section="img" class="section">
-      <p class="section__title  pt2  fw6  di">Main Image</p>
+      <p class="section__title">Main Image</p>
       <input data-input="text" type="text">
     </section>
 
     <section data-section="category" class="section">
-      <p class="section__title  pt2  fw6  di">Category</p>
+      <p class="section__title">Category</p>
       <select data-input="select">
         <option value="Insights">Insights</option>
         <option value="Interviews">Interviews</option>
@@ -70,6 +69,9 @@
   <div class="fr  tar  w-50  di">
     <span class="btn  btn--generate  pv2  ph3  f7" data-generate>GENERATE</span>
   </div>
+
+  <textarea class="mt3" data-generated rows="4" cols="80"></textarea>
+  <p class="tac  f6">Copy generated text</p>
 </div>
 
 {% endblock %}

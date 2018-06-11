@@ -84,8 +84,38 @@ body {
 
 .section__title {
   padding-right: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.section__label {
+ display: block;
+ padding-top: 10px;
+ padding-bottom: 10px;
+ font-size: 14px;
 }
 
 .section__remove {
+  position: absolute;
+  right: 5px;
+  cursor: pointer;
+  padding: 3px;
+  top: 2px;
+  color: palette(red);
+  font-weight: bold;
+  font-size: 18px;
+}
 
+select, option, input, textarea {
+  padding: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  text-shadow: 0;
+  box-shadow: 0;
+  outline: 0;
+  @extend .ba;
+  @extend .bc-light-silver;
+  @extend .shadow1;
 }

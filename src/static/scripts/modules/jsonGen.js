@@ -6,6 +6,7 @@ const jsonGen = {
   addSection: document.querySelector('[data-add-section]'),
   remove: document.querySelectorAll('[data-remove]'),
   generate: document.querySelector('[data-generate]'),
+  generatedtextArea: document.querySelector('[data-generated]'),
 
   init() {
     this.render();
@@ -20,7 +21,8 @@ const jsonGen = {
       case 'heading':
         section = `
           <section data-section="${selectSection}" class="section">
-            <p class="section__title  pt2  fw6  di">${selectSection}</p>
+            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+            <p class="section__title">${selectSection}</p>
             <input data-input="text" type="text" value="">
           </section>
         `;
@@ -28,15 +30,17 @@ const jsonGen = {
       case 'paragraph':
         section = `
           <section data-section="${selectSection}" class="section">
-            <p class="section__title  pt2  fw6">${selectSection}</p>
-            <textarea data-input="text" rows="4" cols="80"></textarea>
+            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+            <p class="section__title">${selectSection}</p>
+            <textarea class="w-100" data-input="text" rows="4" cols="80"></textarea>
           </section>
         `;
         break;
       case 'question':
         section = `
           <section data-section="${selectSection}" class="section">
-            <p class="section__title  pt2  fw6">${selectSection}</p>
+            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+            <p class="section__title">${selectSection}</p>
             <input data-input="text" type="text" value="">
           </section>
         `;
@@ -44,7 +48,8 @@ const jsonGen = {
       case 'answer':
         section = `
           <section data-section="${selectSection}" class="section">
-            <p class="section__title  pt2  fw6">${selectSection}</p>
+            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+            <p class="section__title">${selectSection}</p>
             <textarea data-input="text" rows="4" cols="80"></textarea>
           </section>
         `;
@@ -52,48 +57,53 @@ const jsonGen = {
       case 'bulletList':
         section = `
           <section data-section="${selectSection}" class="section">
-            <p class="section__title  pt2  fw6">${selectSection}<span class="pl1  fw5">(10 max)</span></p>
+            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+            <label class="section__label">Text</label>
+            <p class="section__title">${selectSection}<span class="pl1  fw5">(10 max)</span></p>
             <input data-input="text" type="text" value="">
-            <label>List</label>
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
+            <label class="section__label">List</label>
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
           </section>
         `;
         break;
       case 'numberedList':
         section = `
           <section data-section="${selectSection}" class="section">
-            <p class="section__title  pt2  fw6">${selectSection}<span class="pl1  fw5">(10 max)</span></p>
+            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+            <label class="section__label">Text</label>
+            <p class="section__title">${selectSection}<span class="pl1  fw5">(10 max)</span></p>
             <input data-input="text" type="text" value="">
-            <label>List</label>
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
-            <input data-input="list" type="text" value="">
+            <label class="section__label">List</label>
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="">
           </section>
         `;
         break;
       case 'soundcloud':
         section = `
           <section data-section="${selectSection}" class="section">
-            <p class="section__title  pt2  fw6">${selectSection}</p>
-            <label>URL</label>
+            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+            <p class="section__title">${selectSection}</p>
+            <label class="section__label">URL</label>
             <input data-input="url" type="text" value="">
           </section>
         `;
@@ -101,8 +111,9 @@ const jsonGen = {
       case 'youtube':
         section = `
           <section data-section="${selectSection}" class="section">
-            <p class="section__title  pt2  fw6">${selectSection}</p>
-            <label>URL</label>
+            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+            <p class="section__title">${selectSection}</p>
+            <label class="section__label">URL</label>
             <input data-input="url" type="text" value="">
           </section>
         `;
@@ -110,7 +121,8 @@ const jsonGen = {
       case 'link':
         section = `
           <section data-section="${selectSection}" class="section">
-            <p class="section__title  pt2  fw6">${selectSection}</p>
+            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+            <p class="section__title">${selectSection}</p>
             <select data-input="linkType">
               <option value="Soundcloud">Soundcloud</option>
               <option value="Youtube">Youtube</option>
@@ -119,10 +131,10 @@ const jsonGen = {
               <option value="Instagram">Instagram</option>
             </select>
             <br />
-            <label>text</label>
+            <label class="section__label">text</label>
             <input data-input="text" type="text" value="">
             <br />
-            <label>URL</label>
+            <label class="section__label">URL</label>
             <input data-input="url" type="url" value="">
           </section>
         `;
@@ -131,17 +143,26 @@ const jsonGen = {
     }
 
     jsonGen.sectionsContainer.insertAdjacentHTML('beforeend', section);
+    window.scrollTo(0, document.body.scrollHeight);
   },
 
   removeSection(elem) {
     const elemVal = elem.getAttribute('data-remove');
-    const target = document.querySelector(`data-section="${elemVal}"`);
-    // target.parentNode.removeChild(target);
+    const target = document.querySelector(`[data-section="${elemVal}"]`);
+    target.parentNode.removeChild(target);
   },
 
   generateJSON() {
     const dataSections = document.querySelectorAll('[data-section]');
     let json = '{';
+    let bodyOpened = false;
+
+    const openBody = () => {
+      if (!bodyOpened) {
+        bodyOpened = true;
+        json += '"body": [';
+      }
+    };
 
     for (let i = 0; i < dataSections.length; i += 1) {
       const thisSection = dataSections[i];
@@ -180,6 +201,7 @@ const jsonGen = {
           json += `"${type}": "${categorySection}"`;
           break;
         case 'heading':
+          openBody();
           json += `
           {
             "section": {
@@ -189,6 +211,7 @@ const jsonGen = {
           }`;
           break;
         case 'paragraph':
+          openBody();
           json += `
           {
             "section": {
@@ -198,6 +221,17 @@ const jsonGen = {
           }`;
           break;
         case 'question':
+          openBody();
+          json += `
+          {
+            "section": {
+              "type": "${type}",
+              "text": "${thisSection.querySelector('[data-input="text"]').value}"
+            }
+          }`;
+          break;
+        case 'answer':
+          openBody();
           json += `
           {
             "section": {
@@ -207,6 +241,7 @@ const jsonGen = {
           }`;
           break;
         case 'bulletList':
+          openBody();
           list = '';
           for (let ii = 0; ii < thisSection.querySelectorAll('[data-input="list"]').length; ii += 1) {
             if (thisSection.querySelectorAll('[data-input="list"]')[ii].value) {
@@ -221,7 +256,7 @@ const jsonGen = {
           {
             "section": {
               "type": "${type}",
-              "text": "${thisSection.querySelector('[data-input="text"]').value}"
+              "text": "${thisSection.querySelector('[data-input="text"]').value}",
               "list": [
                 ${list}
               ]
@@ -229,6 +264,7 @@ const jsonGen = {
           }`;
           break;
         case 'numberedList':
+          openBody();
           list = '';
           for (let ii = 0; ii < thisSection.querySelectorAll('[data-input="list"]').length; ii += 1) {
             if (thisSection.querySelectorAll('[data-input="list"]')[ii].value) {
@@ -244,7 +280,7 @@ const jsonGen = {
           {
             "section": {
               "type": "${type}",
-              "text": "${thisSection.querySelector('[data-input="text"]').value}"
+              "text": "${thisSection.querySelector('[data-input="text"]').value}",
               "list": [
                 ${list}
               ]
@@ -252,6 +288,7 @@ const jsonGen = {
           }`;
           break;
         case 'soundcloud':
+          openBody();
           json += `
           {
             "section": {
@@ -261,6 +298,7 @@ const jsonGen = {
           }`;
           break;
         case 'youtube':
+          openBody();
           json += `
           {
             "section": {
@@ -286,8 +324,12 @@ const jsonGen = {
       }
       json += `${blockComma}`;
     }
+    if (bodyOpened) {
+      json += ']';
+    }
     json += '}';
-    console.log(json);
+
+    jsonGen.generatedtextArea.value = json;
   },
 
   render() {
