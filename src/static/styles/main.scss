@@ -108,13 +108,14 @@ body {
 }
 
 select, option, input, textarea {
-  padding: 5px;
+  padding: 8px;
   margin-top: 0px;
   margin-bottom: 0px;
   border-radius: 10px;
   text-shadow: 0;
   box-shadow: 0;
   outline: 0;
+  font-size: 15px;
   @extend .ba;
   @extend .bc-light-silver;
   @extend .shadow1;

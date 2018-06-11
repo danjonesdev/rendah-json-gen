@@ -4,7 +4,6 @@ const jsonGen = {
   sectionsContainer: document.querySelector('[data-sections-container]'),
   selectSection: document.querySelector('[data-section-select]'),
   addSection: document.querySelector('[data-add-section]'),
-  remove: document.querySelectorAll('[data-remove]'),
   generate: document.querySelector('[data-generate]'),
   generatedtextArea: document.querySelector('[data-generated]'),
 
@@ -32,7 +31,7 @@ const jsonGen = {
           <section data-section="${selectSection}" class="section">
             <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
-            <textarea class="w-100" data-input="text" rows="4" cols="80"></textarea>
+            <textarea class="w-100" data-input="text" rows="4" cols="80" placeholder="1 section per paragraph; Line breaks do not take effect"></textarea>
           </section>
         `;
         break;
@@ -50,7 +49,7 @@ const jsonGen = {
           <section data-section="${selectSection}" class="section">
             <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
-            <textarea data-input="text" rows="4" cols="80"></textarea>
+            <textarea data-input="text" rows="4" cols="80" placeholder="1 section per paragraph; Line breaks do not take effect"></textarea>
           </section>
         `;
         break;
@@ -144,11 +143,18 @@ const jsonGen = {
 
     jsonGen.sectionsContainer.insertAdjacentHTML('beforeend', section);
     window.scrollTo(0, document.body.scrollHeight);
+    const removeElems = document.querySelectorAll('[data-remove]');
+
+    // removes section
+    for (let i = 0; i < removeElems.length; i += 1) {
+      removeElems[i].addEventListener('click', () => jsonGen.removeSection(removeElems[i]), false);
+    }
   },
 
   removeSection(elem) {
     const elemVal = elem.getAttribute('data-remove');
     const target = document.querySelector(`[data-section="${elemVal}"]`);
+    console.log(target);
     target.parentNode.removeChild(target);
   },
 
@@ -339,11 +345,6 @@ const jsonGen = {
 
     // appends section
     jsonGen.addSection.addEventListener('click', jsonGen.appendSection, false);
-
-    // removes section
-    for (let i = 0; i < jsonGen.remove.length; i += 1) {
-      jsonGen.remove[i].addEventListener('click', () => jsonGen.removeSection(jsonGen.remove[i]), false);
-    }
 
     // generates json
     jsonGen.generate.addEventListener('click', jsonGen.generateJSON, false);

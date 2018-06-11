@@ -4,24 +4,27 @@
 
 <div class="ph6-md  ph3  pv2  mb6  mw8  center">
 
+  <p class="tac  f6  pt3  pb2">Fill out the sections as needed, add new sections & feel free to mix & match</p>
+
   <div data-sections-container>
     <section data-section="url" class="section">
       <p class="section__title">Article URL</p>
-      <input data-input="text" type="text">
+      <input data-input="text" type="text" placeholder="name-of-article-as-url">
     </section>
 
     <section data-section="title" class="section">
       <p class="section__title">Article Title</p>
-      <input data-input="text" type="text">
+      <input data-input="text" type="text" placeholder="Example Article Title">
     </section>
 
     <section data-section="description" class="section">
       <p class="section__title">Artice Description</p>
-      <textarea class="w-100" data-input="text" rows="4" cols="80"></textarea>
+      <textarea class="w-100" data-input="text" rows="4" cols="80" placeholder="1 section per paragraph; Line breaks do not take effect"></textarea>
     </section>
 
     <section data-section="created" class="section">
       <p class="section__title">Created Date</p>
+      <label class="section__label">Example: 2018-06-04T12:00:00.002Z</label>
       <input data-input="text" type="text">
     </section>
 
@@ -38,7 +41,7 @@
 
     <section data-section="img" class="section">
       <p class="section__title">Main Image</p>
-      <input data-input="text" type="text">
+      <input data-input="text" type="text" placeholder="img-name.jpg">
     </section>
 
     <section data-section="category" class="section">
@@ -70,8 +73,8 @@
     <span class="btn  btn--generate  pv2  ph3  f7" data-generate>GENERATE</span>
   </div>
 
-  <textarea class="mt3" data-generated rows="4" cols="80"></textarea>
-  <p class="tac  f6">Copy generated text</p>
+  <textarea class="mt3  w-100" data-generated rows="4" cols="80"></textarea>
+  <p class="tac  f6  pt3">Copy generated text</p>
 </div>
 
 {% endblock %}
