@@ -71,6 +71,8 @@ body {
 }
 
 .section {
+  position: relative;
+
   @extend .br3;
   @extend .bg-white;
   @extend .ba;
@@ -82,4 +84,8 @@ body {
 
 .section__title {
   padding-right: 10px;
+}
+
+.section__remove {
+
 }
