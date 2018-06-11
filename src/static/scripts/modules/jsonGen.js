@@ -56,44 +56,42 @@ const jsonGen = {
       case 'bulletList':
         section = `
           <section data-section="${selectSection}" class="section">
+          <p class="section__title">${selectSection}<span class="pl1  fw5">(10 max)</span></p>
             <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
             <label class="section__label">Text</label>
-            <p class="section__title">${selectSection}<span class="pl1  fw5">(10 max)</span></p>
-            <input data-input="text" type="text" value="">
+            <input data-input="text" type="text" value="" placeholder="Here is the list:">
             <label class="section__label">List</label>
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="" placeholder="1">
+            <input class="db" data-input="list" type="text" value="" placeholder="2">
+            <input class="db" data-input="list" type="text" value="" placeholder="3">
+            <input class="db" data-input="list" type="text" value="" placeholder="4">
+            <input class="db" data-input="list" type="text" value="" placeholder="5">
+            <input class="db" data-input="list" type="text" value="" placeholder="6">
+            <input class="db" data-input="list" type="text" value="" placeholder="7">
+            <input class="db" data-input="list" type="text" value="" placeholder="8">
+            <input class="db" data-input="list" type="text" value="" placeholder="9">
+            <input class="db" data-input="list" type="text" value="" placeholder="10">
           </section>
         `;
         break;
       case 'numberedList':
         section = `
           <section data-section="${selectSection}" class="section">
+          <p class="section__title">${selectSection}<span class="pl1  fw5">(10 max)</span></p>
             <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
             <label class="section__label">Text</label>
-            <p class="section__title">${selectSection}<span class="pl1  fw5">(10 max)</span></p>
-            <input data-input="text" type="text" value="">
+            <input data-input="text" type="text" value="" placeholder="Here is the list:">
             <label class="section__label">List</label>
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
-            <input class="db" data-input="list" type="text" value="">
+            <input class="db" data-input="list" type="text" value="" placeholder="1">
+            <input class="db" data-input="list" type="text" value="" placeholder="2">
+            <input class="db" data-input="list" type="text" value="" placeholder="3">
+            <input class="db" data-input="list" type="text" value="" placeholder="4">
+            <input class="db" data-input="list" type="text" value="" placeholder="5">
+            <input class="db" data-input="list" type="text" value="" placeholder="6">
+            <input class="db" data-input="list" type="text" value="" placeholder="7">
+            <input class="db" data-input="list" type="text" value="" placeholder="8">
+            <input class="db" data-input="list" type="text" value="" placeholder="9">
+            <input class="db" data-input="list" type="text" value="" placeholder="10">
           </section>
         `;
         break;
@@ -102,7 +100,11 @@ const jsonGen = {
           <section data-section="${selectSection}" class="section">
             <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
-            <label class="section__label">URL</label>
+            <label class="section__label">Get relevant Type & ID from Soundcloud embed code</label>
+            <label class="section__label">Track embed example: <span class="ph1  bg-light-grey">tracks/442028544</span></label>
+            <label class="section__label">Playlist embed example: <span class="ph1  bg-light-grey">playlists/442028544</span></label>
+            <label class="section__label">Profile embed example: <span class="ph1  bg-light-grey">users/442028544</span></label>
+
             <input data-input="url" type="text" value="">
           </section>
         `;
@@ -112,7 +114,7 @@ const jsonGen = {
           <section data-section="${selectSection}" class="section">
             <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
-            <label class="section__label">URL</label>
+            <label class="section__label">Youtube embed example: <span class="ph1  bg-light-grey">k8jUprWj-Zo</span></label>
             <input data-input="url" type="text" value="">
           </section>
         `;
@@ -131,10 +133,10 @@ const jsonGen = {
             </select>
             <br />
             <label class="section__label">text</label>
-            <input data-input="text" type="text" value="">
+            <input data-input="text" type="text" value="" placeholder="XXX on Soundcloud">
             <br />
             <label class="section__label">URL</label>
-            <input data-input="url" type="url" value="">
+            <input data-input="url" type="url" value=""  placeholder="https://soundcloud.com/xxx">
           </section>
         `;
         break;
