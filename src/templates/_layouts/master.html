@@ -1,7 +1,6 @@
 {% set settings = settings | default({}) | merge({
   siteName: 'Rendah Article Generator',
-  siteDesc: 'Frontend build system for internal use.',
-  helper: true,
+  siteDesc: '',
   version: '1.0.0'
 }) %}
 
@@ -26,13 +25,6 @@
 
   <body{% if bodyClass is defined %} class="{{bodyClass}}"{% endif %}>
     <div class="app  flex  flex-column{% if settings.helper == true %}  rel  mvh-100{% endif %}">
-      {% if settings.helper == true %}
-        {% include '../_partials/helper.html' with {
-          grid: true,
-          cols: '24',
-          width: '1'
-        } %}
-      {% endif %}
 
       <header class="flex  align-center  justify-between  ph5  bb  bc-moon-grey">
         <div class="pv3">
