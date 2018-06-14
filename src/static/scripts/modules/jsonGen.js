@@ -130,6 +130,7 @@ const jsonGen = {
               <option value="Twitter">Twitter</option>
               <option value="Facebook">Facebook</option>
               <option value="Instagram">Instagram</option>
+              <option value="Website">Website</option>
             </select>
             <br />
             <label class="section__label">text</label>
@@ -184,28 +185,28 @@ const jsonGen = {
 
       switch (type) {
         case 'url':
-          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value}"`;
+          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"`;
           break;
         case 'title':
-          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value}"`;
+          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"`;
           break;
         case 'description':
-          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value}"`;
+          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"`;
           break;
         case 'created':
-          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value}"`;
+          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"`;
           break;
         case 'img':
-          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value}"`;
+          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"`;
           break;
         case 'author':
           const authorSection =
-            thisSection.querySelector('[data-input="select"]').options[thisSection.querySelector('[data-input="select"]').selectedIndex].value;
+            thisSection.querySelector('[data-input="select"]').options[thisSection.querySelector('[data-input="select"]').selectedIndex].value.replace(/\n/g, '');
           json += `"${type}": "${authorSection}"`;
           break;
         case 'category':
           const categorySection =
-            thisSection.querySelector('[data-input="select"]').options[thisSection.querySelector('[data-input="select"]').selectedIndex].value;
+            thisSection.querySelector('[data-input="select"]').options[thisSection.querySelector('[data-input="select"]').selectedIndex].value.replace(/\n/g, '');
           json += `"${type}": "${categorySection}"`;
           break;
         case 'heading':
@@ -214,7 +215,7 @@ const jsonGen = {
           {
             "section": {
               "type": "${type}",
-              "text": "${thisSection.querySelector('[data-input="text"]').value}"
+              "text": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"
             }
           }`;
           break;
@@ -224,7 +225,7 @@ const jsonGen = {
           {
             "section": {
               "type": "${type}",
-              "text": "${thisSection.querySelector('[data-input="text"]').value}"
+              "text": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"
             }
           }`;
           break;
@@ -234,7 +235,7 @@ const jsonGen = {
           {
             "section": {
               "type": "${type}",
-              "text": "${thisSection.querySelector('[data-input="text"]').value}"
+              "text": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"
             }
           }`;
           break;
@@ -244,7 +245,7 @@ const jsonGen = {
           {
             "section": {
               "type": "${type}",
-              "text": "${thisSection.querySelector('[data-input="text"]').value}"
+              "text": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"
             }
           }`;
           break;
@@ -257,14 +258,14 @@ const jsonGen = {
               if ((ii + 1) === (thisSection.querySelectorAll('[data-input="list"]').length)) {
                 comma = '';
               }
-              list += `"${thisSection.querySelectorAll('[data-input="list"]')[ii].value}"${comma}`;
+              list += `"${thisSection.querySelectorAll('[data-input="list"]')[ii].value.replace(/\n/g, '')}"${comma}`;
             }
           }
           json += `
           {
             "section": {
               "type": "${type}",
-              "text": "${thisSection.querySelector('[data-input="text"]').value}",
+              "text": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}",
               "list": [
                 ${list}
               ]
@@ -280,7 +281,7 @@ const jsonGen = {
               if ((ii + 1) === (thisSection.querySelectorAll('[data-input="list"]').length)) {
                 comma = '';
               }
-              list += `"${thisSection.querySelectorAll('[data-input="list"]')[ii].value}"${comma}`;
+              list += `"${thisSection.querySelectorAll('[data-input="list"]')[ii].value.replace(/\n/g, '')}"${comma}`;
             }
           }
 
@@ -288,7 +289,7 @@ const jsonGen = {
           {
             "section": {
               "type": "${type}",
-              "text": "${thisSection.querySelector('[data-input="text"]').value}",
+              "text": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}",
               "list": [
                 ${list}
               ]
@@ -301,7 +302,7 @@ const jsonGen = {
           {
             "section": {
               "type": "${type}",
-              "text": "${thisSection.querySelector('[data-input="url"]').value}"
+              "url": "${thisSection.querySelector('[data-input="url"]').value.replace(/\n/g, '')}"
             }
           }`;
           break;
@@ -311,20 +312,20 @@ const jsonGen = {
           {
             "section": {
               "type": "${type}",
-              "text": "${thisSection.querySelector('[data-input="url"]').value}"
+              "url": "${thisSection.querySelector('[data-input="url"]').value.replace(/\n/g, '')}"
             }
           }`;
           break;
         case 'link':
           const linkSection =
-            thisSection.querySelector('[data-input="linkType"]').options[thisSection.querySelector('[data-input="linkType"]').selectedIndex].value;
+            thisSection.querySelector('[data-input="linkType"]').options[thisSection.querySelector('[data-input="linkType"]').selectedIndex].value.replace(/\n/g, '');
           json += `
           {
             "section": {
               "type": "${type}",
               "linkType": "${linkSection}",
-              "text": "${thisSection.querySelector('[data-input="text"]').value}",
-              "url": "${thisSection.querySelector('[data-input="url"]').value}"
+              "text": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '').replace(/\n/g, '')}",
+              "url": "${thisSection.querySelector('[data-input="url"]').value.replace(/\n/g, '')}"
             }
           }`;
           break;
@@ -337,6 +338,7 @@ const jsonGen = {
     }
     json += '}';
 
+    console.log(json);
     jsonGen.generatedtextArea.value = json;
   },
 
