@@ -109,6 +109,17 @@ const jsonGen = {
           </section>
         `;
         break;
+      case 'spotify':
+        section = `
+          <section data-section="${selectSection}" class="section">
+            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+            <p class="section__title">${selectSection}</p>
+            <label class="section__label">URI</label>
+
+            <input data-input="uri" type="text" value="">
+          </section>
+        `;
+        break;
       case 'youtube':
         section = `
           <section data-section="${selectSection}" class="section">
@@ -311,6 +322,16 @@ const jsonGen = {
             "section": {
               "type": "${type}",
               "url": "${jsonGen.cleanUtil(thisSection.querySelector('[data-input="url"]').value)}"
+            }
+          }`;
+          break;
+        case 'spotify':
+          openBody();
+          json += `
+          {
+            "section": {
+              "type": "${type}",
+              "uri": "${jsonGen.cleanUtil(thisSection.querySelector('[data-input="uri"]').value)}"
             }
           }`;
           break;
