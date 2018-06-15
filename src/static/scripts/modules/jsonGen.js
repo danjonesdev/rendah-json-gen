@@ -194,9 +194,13 @@ const jsonGen = {
           json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"`;
           break;
         case 'created':
-          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"`;
+          json += `
+            "${type}": {
+              "$date": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"
+            }`;
           break;
         case 'img':
+
           json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"`;
           break;
         case 'author':
