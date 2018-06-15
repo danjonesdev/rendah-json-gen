@@ -161,6 +161,12 @@ const jsonGen = {
     target.parentNode.removeChild(target);
   },
 
+  cleanUtil(val) {
+    // replace double spaces, tabs, newlines
+    // replace double quotes with single
+    return val.replace(/\s\s+/g, ' ').replace(/"/g, "'");
+  },
+
   generateJSON() {
     const dataSections = document.querySelectorAll('[data-section]');
     let json = '{';
@@ -177,6 +183,7 @@ const jsonGen = {
       const thisSection = dataSections[i];
       const type = thisSection.getAttribute('data-section');
       let list;
+      let comma = ',';
 
       let blockComma = ',';
       if ((i + 1) === (dataSections.length)) {
@@ -185,33 +192,32 @@ const jsonGen = {
 
       switch (type) {
         case 'url':
-          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"`;
+          json += `"${type}": "${jsonGen.cleanUtil(thisSection.querySelector('[data-input="text"]').value)}"`;
           break;
         case 'title':
-          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"`;
+          json += `"${type}": "${jsonGen.cleanUtil(thisSection.querySelector('[data-input="text"]').value)}"`;
           break;
         case 'description':
-          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"`;
+          json += `"${type}": "${jsonGen.cleanUtil(thisSection.querySelector('[data-input="text"]').value)}"`;
           break;
         case 'created':
           json += `
             "${type}": {
-              "$date": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"
+              "$date": "${jsonGen.cleanUtil(thisSection.querySelector('[data-input="text"]').value)}"
             }`;
           break;
         case 'img':
-
-          json += `"${type}": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"`;
+          json += `"${type}": "${jsonGen.cleanUtil(thisSection.querySelector('[data-input="text"]').value)}"`;
           break;
         case 'author':
           const authorSection =
-            thisSection.querySelector('[data-input="select"]').options[thisSection.querySelector('[data-input="select"]').selectedIndex].value.replace(/\n/g, '');
-          json += `"${type}": "${authorSection}"`;
+            thisSection.querySelector('[data-input="select"]').options[thisSection.querySelector('[data-input="select"]').selectedIndex].value;
+          json += `"${type}": "${jsonGen.cleanUtil(authorSection)}"`;
           break;
         case 'category':
           const categorySection =
-            thisSection.querySelector('[data-input="select"]').options[thisSection.querySelector('[data-input="select"]').selectedIndex].value.replace(/\n/g, '');
-          json += `"${type}": "${categorySection}"`;
+            thisSection.querySelector('[data-input="select"]').options[thisSection.querySelector('[data-input="select"]').selectedIndex].value;
+          json += `"${type}": "${jsonGen.cleanUtil(categorySection)}"`;
           break;
         case 'heading':
           openBody();
@@ -219,7 +225,7 @@ const jsonGen = {
           {
             "section": {
               "type": "${type}",
-              "text": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"
+              "text": "${jsonGen.cleanUtil(thisSection.querySelector('[data-input="text"]').value)}"
             }
           }`;
           break;
@@ -229,7 +235,7 @@ const jsonGen = {
           {
             "section": {
               "type": "${type}",
-              "text": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"
+              "text": "${jsonGen.cleanUtil(thisSection.querySelector('[data-input="text"]').value)}"
             }
           }`;
           break;
@@ -239,7 +245,7 @@ const jsonGen = {
           {
             "section": {
               "type": "${type}",
-              "text": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"
+              "text": "${jsonGen.cleanUtil(thisSection.querySelector('[data-input="text"]').value)}"
             }
           }`;
           break;
@@ -249,7 +255,7 @@ const jsonGen = {
           {
             "section": {
               "type": "${type}",
-              "text": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}"
+              "text": "${jsonGen.cleanUtil(thisSection.querySelector('[data-input="text"]').value)}"
             }
           }`;
           break;
@@ -258,18 +264,17 @@ const jsonGen = {
           list = '';
           for (let ii = 0; ii < thisSection.querySelectorAll('[data-input="list"]').length; ii += 1) {
             if (thisSection.querySelectorAll('[data-input="list"]')[ii].value) {
-              let comma = ',';
               if ((ii + 1) === (thisSection.querySelectorAll('[data-input="list"]').length)) {
                 comma = '';
               }
-              list += `"${thisSection.querySelectorAll('[data-input="list"]')[ii].value.replace(/\n/g, '')}"${comma}`;
+              list += `"${jsonGen.cleanUtil(thisSection.querySelectorAll('[data-input="list"]')[ii].value)}"${comma}`;
             }
           }
           json += `
           {
             "section": {
               "type": "${type}",
-              "text": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}",
+              "text": "${jsonGen.cleanUtil(thisSection.querySelector('[data-input="text"]').value)}",
               "list": [
                 ${list}
               ]
@@ -281,11 +286,10 @@ const jsonGen = {
           list = '';
           for (let ii = 0; ii < thisSection.querySelectorAll('[data-input="list"]').length; ii += 1) {
             if (thisSection.querySelectorAll('[data-input="list"]')[ii].value) {
-              let comma = ',';
               if ((ii + 1) === (thisSection.querySelectorAll('[data-input="list"]').length)) {
                 comma = '';
               }
-              list += `"${thisSection.querySelectorAll('[data-input="list"]')[ii].value.replace(/\n/g, '')}"${comma}`;
+              list += `"${jsonGen.cleanUtil(thisSection.querySelectorAll('[data-input="list"]')[ii].value)}"${comma}`;
             }
           }
 
@@ -293,7 +297,7 @@ const jsonGen = {
           {
             "section": {
               "type": "${type}",
-              "text": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '')}",
+              "text": "${jsonGen.cleanUtil(thisSection.querySelector('[data-input="text"]').value)}",
               "list": [
                 ${list}
               ]
@@ -306,7 +310,7 @@ const jsonGen = {
           {
             "section": {
               "type": "${type}",
-              "url": "${thisSection.querySelector('[data-input="url"]').value.replace(/\n/g, '')}"
+              "url": "${jsonGen.cleanUtil(thisSection.querySelector('[data-input="url"]').value)}"
             }
           }`;
           break;
@@ -316,20 +320,20 @@ const jsonGen = {
           {
             "section": {
               "type": "${type}",
-              "url": "${thisSection.querySelector('[data-input="url"]').value.replace(/\n/g, '')}"
+              "url": "${jsonGen.cleanUtil(thisSection.querySelector('[data-input="url"]').value)}"
             }
           }`;
           break;
         case 'link':
           const linkSection =
-            thisSection.querySelector('[data-input="linkType"]').options[thisSection.querySelector('[data-input="linkType"]').selectedIndex].value.replace(/\n/g, '');
+            jsonGen.cleanUtil(thisSection.querySelector('[data-input="linkType"]').options[thisSection.querySelector('[data-input="linkType"]').selectedIndex].value);
           json += `
           {
             "section": {
               "type": "${type}",
               "linkType": "${linkSection}",
-              "text": "${thisSection.querySelector('[data-input="text"]').value.replace(/\n/g, '').replace(/\n/g, '')}",
-              "url": "${thisSection.querySelector('[data-input="url"]').value.replace(/\n/g, '')}"
+              "text": "${jsonGen.cleanUtil(thisSection.querySelector('[data-input="text"]').value)}",
+              "url": "${jsonGen.cleanUtil(thisSection.querySelector('[data-input="url"]').value)}"
             }
           }`;
           break;
