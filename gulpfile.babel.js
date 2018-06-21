@@ -21,6 +21,7 @@ import twig from 'gulp-twig';
 import util from 'gulp-util';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
+import nodemon from 'gulp-nodemon';
 
 const pkg = require('./package.json');
 
@@ -37,12 +38,37 @@ const onError = function(err) {
 };
 
 // BrowserSync
-
 gulp.task('browserSync', () => {
   browserSync.init({
     server: pkg.paths.dist.root,
     notify: false
   });
+});
+// gulp.task('browserSync', ['nodemon'], () => {
+//   browserSync.init(null, {
+//     server: pkg.paths.build.root,
+//     notify: false,
+//     files: ["build/**/*.*"],
+//     port: 3001,
+//   });
+// });
+
+// Nodemon
+
+gulp.task('nodemon', function (cb) {
+
+	var started = false;
+
+	return nodemon({
+		script: 'server.js'
+	}).on('start', function () {
+		// to avoid nodemon being started multiple times
+		// thanks @matthisk
+		if (!started) {
+			cb();
+			started = true;
+		}
+	});
 });
 
 // Scripts

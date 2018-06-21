@@ -53,8 +53,12 @@ textarea {
   @extend .shadow1;
 }
 
+
 input,
-option,
+option {
+  max-width: 450px;
+}
+
 select {
   max-width: 300px;
 }

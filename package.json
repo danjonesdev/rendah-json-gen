@@ -26,9 +26,13 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
     "flickity": "^2.1.1",
     "flickity-imagesloaded": "^2.0.0",
+    "gulp-nodemon": "^2.2.1",
     "js-cookie": "^2.2.0",
+    "path": "^0.12.7",
     "superagent": "^3.8.3",
     "webfontloader": "^1.6.28"
   },
