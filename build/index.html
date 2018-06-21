@@ -1,0 +1,128 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <title>Rendah Article Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-title" content="Rendah Article Generator">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="/static/images/favicons/site.webmanifest" />
+    <link rel="mask-icon" href="/static/images/favicons/safari-pinned-tab.svg" color="#5bbad5" />
+    <link rel="stylesheet" href="/static/styles/main.css"> </head>
+  <body>
+    <div class="app  flex  flex-column">
+      <header class="flex  align-center  justify-between  ph5  bb  bc-moon-grey">
+        <div class="pv3">
+          <h1 class="f5  fw7  lh-title  almost-black  mb0">
+            <a class="link  black" href="/">Rendah Article Generator
+              <small class="ml2  fw3">1.0.0</small>
+            </a>
+          </h1>
+        </div>
+      </header>
+      <main role="main">
+        <div class="ph6-md  ph3  pv2  mb3  mw8  center">
+          <p class="tac  f6  pt3  mb0">Fill out the sections as needed, add new sections & feel free to mix & match</p>
+          <div data-sections-container>
+            <section data-section="url" class="section">
+              <p class="section__title">Article URL</p>
+              <input data-input="text" type="text" placeholder="name-of-article-as-url"> </section>
+            <section data-section="title" class="section">
+              <p class="section__title">Article Title</p>
+              <input data-input="text" type="text" placeholder="Example Article Title"> </section>
+            <section data-section="description" class="section">
+              <p class="section__title">Artice Description</p>
+              <textarea class="w-100" data-input="text" rows="4" cols="80" placeholder="1 section per paragraph; Line breaks do not take effect"></textarea>
+            </section>
+            <section data-section="created" class="section">
+              <p class="section__title">Created Date</p>
+              <label class="section__label">Example: 2018-06-04T12:00:00.002Z</label>
+              <input data-input="text" type="text"> </section>
+            <section data-section="author" class="section">
+              <p class="section__title">Author</p>
+              <select data-input="select">
+                <option value="Dan Jones">Dan Jones</option>
+                <option value="Harry Taylor">Harry Taylor</option>
+                <option value="Dayle Hamers">Dayle Hamers</option>
+                <option value="Kieran May">Kieran May</option>
+                <option value="Sam Langley">Sam Langley</option>
+                <option value="Hajo Krijger">Hajo Krijger</option>
+              </select>
+            </section>
+            <section data-section="img" class="section">
+              <p class="section__title">Main Image</p>
+              <input data-input="text" type="text" placeholder="img-name.jpg"> </section>
+            <section data-section="category" class="section">
+              <p class="section__title">Category</p>
+              <select data-input="select">
+                <option value="Insights">Insights</option>
+                <option value="Interviews">Interviews</option>
+                <option value="News">News</option>
+              </select>
+            </section>
+          </div>
+          <div class="fl  tal  w-70  di">
+            <select data-section-select>
+              <option value="heading">heading</option>
+              <option value="paragraph">paragraph</option>
+              <option value="question">question</option>
+              <option value="answer">answer</option>
+              <option value="bulletList">bulletList</option>
+              <option value="numberedList">numberedList</option>
+              <option value="soundcloud">soundcloud</option>
+              <option value="spotify">spotify</option>
+              <option value="youtube">youtube</option>
+              <option value="link">link</option>
+            </select>
+            <span class="btn  btn--addSection  pv2  ph3  f7  ml2" data-add-section>ADD SECTION</span>
+          </div>
+          <div class="fr  tar  w-30  di">
+            <span class="btn  btn--generate  pv2  ph3  f7" data-generate>GENERATE</span>
+          </div>
+          <textarea class="mt3  w-100" data-generated rows="4" cols="80"></textarea>
+          <p class="tac  f6  pt3">Copy generated text</p>
+        </div>
+      </main>
+    </div>
+    <script>
+      // Safari 10.1 supports modules, but does not support the `nomodule`
+      // attribute - it will load <script nomodule> anyway
+      // https://gist.github.com/samthor/64b114e4a4f539915a95b91ffd340acc
+      (function()
+      {
+        var d = document;
+        var c = d.createElement('script');
+        if (!('noModule' in c) && 'onbeforeload' in c)
+        {
+          var s = false;
+          d.addEventListener('beforeload', function(e)
+          {
+            if (e.target === c)
+            {
+              s = true;
+            }
+            else if (!e.target.hasAttribute('nomodule') || !s)
+            {
+              return;
+            }
+            e.preventDefault();
+          }, true);
+          c.type = 'module';
+          c.src = '.';
+          d.head.appendChild(c);
+          c.remove();
+        }
+      }());
+    </script>
+    <script type="module" src="/static/scripts/bundle.js"></script>
+    <script nomodule src="/static/scripts/bundle-legacy.js"></script>
+  </body>
+</html>
