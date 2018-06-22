@@ -13,6 +13,8 @@ app.use(cors({
   credentials: true
 }));
 
-app.listen(3000, function() {
+var PORT = process.env.PORT ? process.env.PORT : 3000;
+
+app.listen(PORT, function() {
   console.log('listening on 3000');
 });
