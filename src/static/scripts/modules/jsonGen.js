@@ -130,6 +130,16 @@ const jsonGen = {
           </section>
         `;
         break;
+      case 'FacebookVideo':
+        section = `
+          <section data-section="${selectSection}" class="section">
+            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+            <p class="section__title">${selectSection}</p>
+            <label class="section__label">FacebookVideo embed</label>
+            <input data-input="url" type="text" value="">
+          </section>
+        `;
+        break;
       case 'link':
         section = `
           <section data-section="${selectSection}" class="section">
@@ -336,6 +346,16 @@ const jsonGen = {
           }`;
           break;
         case 'youtube':
+          openBody();
+          json += `
+          {
+            "section": {
+              "type": "${type}",
+              "url": "${jsonGen.cleanUtil(thisSection.querySelector('[data-input="url"]').value)}"
+            }
+          }`;
+          break;
+        case 'FacebookVideo':
           openBody();
           json += `
           {
