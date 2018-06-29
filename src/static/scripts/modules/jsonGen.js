@@ -6,12 +6,14 @@ const jsonGen = {
   addSection: document.querySelector('[data-add-section]'),
   generate: document.querySelector('[data-generate]'),
   generatedtextArea: document.querySelector('[data-generated]'),
+  removeElems: [],
 
   init() {
     this.render();
   },
 
   appendSection() {
+    const iterationNumb = jsonGen.removeElems.length;
     const selectSection =
       jsonGen.selectSection.options[jsonGen.selectSection.selectedIndex].value;
 
@@ -19,8 +21,8 @@ const jsonGen = {
     switch (selectSection) {
       case 'heading':
         section = `
-          <section data-section="${selectSection}" class="section">
-            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+          <section data-section="${selectSection}-${iterationNumb}" class="section">
+            <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
             <input data-input="text" type="text" value="">
           </section>
@@ -28,8 +30,8 @@ const jsonGen = {
         break;
       case 'paragraph':
         section = `
-          <section data-section="${selectSection}" class="section">
-            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+          <section data-section="${selectSection}-${iterationNumb}" class="section">
+            <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
             <textarea class="w-100" data-input="text" rows="4" cols="80" placeholder="1 section per paragraph; Line breaks do not take effect"></textarea>
           </section>
@@ -37,8 +39,8 @@ const jsonGen = {
         break;
       case 'question':
         section = `
-          <section data-section="${selectSection}" class="section">
-            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+          <section data-section="${selectSection}-${iterationNumb}" class="section">
+            <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
             <input data-input="text" type="text" value="">
           </section>
@@ -46,8 +48,8 @@ const jsonGen = {
         break;
       case 'answer':
         section = `
-          <section data-section="${selectSection}" class="section">
-            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+          <section data-section="${selectSection}-${iterationNumb}" class="section">
+            <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
             <textarea data-input="text" rows="4" cols="80" placeholder="1 section per paragraph; Line breaks do not take effect"></textarea>
           </section>
@@ -55,9 +57,9 @@ const jsonGen = {
         break;
       case 'bulletList':
         section = `
-          <section data-section="${selectSection}" class="section">
+          <section data-section="${selectSection}-${iterationNumb}" class="section">
           <p class="section__title">${selectSection}<span class="pl1  fw5">(10 max)</span></p>
-            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+            <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <label class="section__label">Text</label>
             <input data-input="text" type="text" value="" placeholder="Here is the list:">
             <label class="section__label">List</label>
@@ -76,9 +78,9 @@ const jsonGen = {
         break;
       case 'numberedList':
         section = `
-          <section data-section="${selectSection}" class="section">
+          <section data-section="${selectSection}-${iterationNumb}" class="section">
           <p class="section__title">${selectSection}<span class="pl1  fw5">(10 max)</span></p>
-            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+            <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <label class="section__label">Text</label>
             <input data-input="text" type="text" value="" placeholder="Here is the list:">
             <label class="section__label">List</label>
@@ -97,8 +99,8 @@ const jsonGen = {
         break;
       case 'soundcloud':
         section = `
-          <section data-section="${selectSection}" class="section">
-            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+          <section data-section="${selectSection}-${iterationNumb}" class="section">
+            <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
             <label class="section__label">Get relevant Type & ID from Soundcloud embed code</label>
             <label class="section__label">Track embed example: <span class="ph1  bg-light-grey">tracks/442028544</span></label>
@@ -111,8 +113,8 @@ const jsonGen = {
         break;
       case 'spotify':
         section = `
-          <section data-section="${selectSection}" class="section">
-            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+          <section data-section="${selectSection}-${iterationNumb}" class="section">
+            <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
             <label class="section__label">URI</label>
 
@@ -122,8 +124,8 @@ const jsonGen = {
         break;
       case 'youtube':
         section = `
-          <section data-section="${selectSection}" class="section">
-            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+          <section data-section="${selectSection}-${iterationNumb}" class="section">
+            <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
             <label class="section__label">Youtube embed example: <span class="ph1  bg-light-grey">k8jUprWj-Zo</span></label>
             <input data-input="url" type="text" value="">
@@ -132,8 +134,8 @@ const jsonGen = {
         break;
       case 'FacebookVideo':
         section = `
-          <section data-section="${selectSection}" class="section">
-            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+          <section data-section="${selectSection}-${iterationNumb}" class="section">
+            <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
             <label class="section__label">FacebookVideo embed</label>
             <input data-input="url" type="text" value="">
@@ -142,8 +144,8 @@ const jsonGen = {
         break;
       case 'link':
         section = `
-          <section data-section="${selectSection}" class="section">
-            <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
+          <section data-section="${selectSection}-${iterationNumb}" class="section">
+            <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
             <select data-input="linkType">
               <option value="Soundcloud">Soundcloud</option>
@@ -167,19 +169,22 @@ const jsonGen = {
 
     jsonGen.sectionsContainer.insertAdjacentHTML('beforeend', section);
     window.scrollTo(0, document.body.scrollHeight);
-    const removeElems = document.querySelectorAll('[data-remove]');
+
+    const removeElem = document.querySelector(`[data-remove=${selectSection}-${iterationNumb}]`);
+    jsonGen.removeElems.push(removeElem);
 
     // removes section
-    for (let i = 0; i < removeElems.length; i += 1) {
-      removeElems[i].addEventListener('click', () => jsonGen.removeSection(removeElems[i]), false);
+    for (let i = 0; i < jsonGen.removeElems.length; i += 1) {
+      jsonGen.removeElems[i].addEventListener('click', () => jsonGen.removeSection(jsonGen.removeElems[i]), false);
     }
   },
 
   removeSection(elem) {
     const elemVal = elem.getAttribute('data-remove');
     const target = document.querySelector(`[data-section="${elemVal}"]`);
-    console.log(target);
-    target.parentNode.removeChild(target);
+    if (elem && target) {
+      target.parentNode.removeChild(target);
+    }
   },
 
   cleanUtil(val) {

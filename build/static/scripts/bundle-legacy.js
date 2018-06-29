@@ -104,72 +104,77 @@ var jsonGen = {
   addSection: document.querySelector('[data-add-section]'),
   generate: document.querySelector('[data-generate]'),
   generatedtextArea: document.querySelector('[data-generated]'),
+  removeElems: [],
 
   init: function init() {
     this.render();
   },
   appendSection: function appendSection() {
+    var iterationNumb = jsonGen.removeElems.length;
     var selectSection = jsonGen.selectSection.options[jsonGen.selectSection.selectedIndex].value;
 
     var section = void 0;
     switch (selectSection) {
       case 'heading':
-        section = '\n          <section data-section="' + selectSection + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <input data-input="text" type="text" value="">\n          </section>\n        ';
+        section = '\n          <section data-section="' + selectSection + '-' + iterationNumb + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '-' + iterationNumb + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <input data-input="text" type="text" value="">\n          </section>\n        ';
         break;
       case 'paragraph':
-        section = '\n          <section data-section="' + selectSection + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <textarea class="w-100" data-input="text" rows="4" cols="80" placeholder="1 section per paragraph; Line breaks do not take effect"></textarea>\n          </section>\n        ';
+        section = '\n          <section data-section="' + selectSection + '-' + iterationNumb + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '-' + iterationNumb + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <textarea class="w-100" data-input="text" rows="4" cols="80" placeholder="1 section per paragraph; Line breaks do not take effect"></textarea>\n          </section>\n        ';
         break;
       case 'question':
-        section = '\n          <section data-section="' + selectSection + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <input data-input="text" type="text" value="">\n          </section>\n        ';
+        section = '\n          <section data-section="' + selectSection + '-' + iterationNumb + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '-' + iterationNumb + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <input data-input="text" type="text" value="">\n          </section>\n        ';
         break;
       case 'answer':
-        section = '\n          <section data-section="' + selectSection + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <textarea data-input="text" rows="4" cols="80" placeholder="1 section per paragraph; Line breaks do not take effect"></textarea>\n          </section>\n        ';
+        section = '\n          <section data-section="' + selectSection + '-' + iterationNumb + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '-' + iterationNumb + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <textarea data-input="text" rows="4" cols="80" placeholder="1 section per paragraph; Line breaks do not take effect"></textarea>\n          </section>\n        ';
         break;
       case 'bulletList':
-        section = '\n          <section data-section="' + selectSection + '" class="section">\n          <p class="section__title">' + selectSection + '<span class="pl1  fw5">(10 max)</span></p>\n            <span class="section__remove" data-remove="' + selectSection + '">&#10006;</span>\n            <label class="section__label">Text</label>\n            <input data-input="text" type="text" value="" placeholder="Here is the list:">\n            <label class="section__label">List</label>\n            <input class="db" data-input="list" type="text" value="" placeholder="1">\n            <input class="db" data-input="list" type="text" value="" placeholder="2">\n            <input class="db" data-input="list" type="text" value="" placeholder="3">\n            <input class="db" data-input="list" type="text" value="" placeholder="4">\n            <input class="db" data-input="list" type="text" value="" placeholder="5">\n            <input class="db" data-input="list" type="text" value="" placeholder="6">\n            <input class="db" data-input="list" type="text" value="" placeholder="7">\n            <input class="db" data-input="list" type="text" value="" placeholder="8">\n            <input class="db" data-input="list" type="text" value="" placeholder="9">\n            <input class="db" data-input="list" type="text" value="" placeholder="10">\n          </section>\n        ';
+        section = '\n          <section data-section="' + selectSection + '-' + iterationNumb + '" class="section">\n          <p class="section__title">' + selectSection + '<span class="pl1  fw5">(10 max)</span></p>\n            <span class="section__remove" data-remove="' + selectSection + '-' + iterationNumb + '">&#10006;</span>\n            <label class="section__label">Text</label>\n            <input data-input="text" type="text" value="" placeholder="Here is the list:">\n            <label class="section__label">List</label>\n            <input class="db" data-input="list" type="text" value="" placeholder="1">\n            <input class="db" data-input="list" type="text" value="" placeholder="2">\n            <input class="db" data-input="list" type="text" value="" placeholder="3">\n            <input class="db" data-input="list" type="text" value="" placeholder="4">\n            <input class="db" data-input="list" type="text" value="" placeholder="5">\n            <input class="db" data-input="list" type="text" value="" placeholder="6">\n            <input class="db" data-input="list" type="text" value="" placeholder="7">\n            <input class="db" data-input="list" type="text" value="" placeholder="8">\n            <input class="db" data-input="list" type="text" value="" placeholder="9">\n            <input class="db" data-input="list" type="text" value="" placeholder="10">\n          </section>\n        ';
         break;
       case 'numberedList':
-        section = '\n          <section data-section="' + selectSection + '" class="section">\n          <p class="section__title">' + selectSection + '<span class="pl1  fw5">(10 max)</span></p>\n            <span class="section__remove" data-remove="' + selectSection + '">&#10006;</span>\n            <label class="section__label">Text</label>\n            <input data-input="text" type="text" value="" placeholder="Here is the list:">\n            <label class="section__label">List</label>\n            <input class="db" data-input="list" type="text" value="" placeholder="1">\n            <input class="db" data-input="list" type="text" value="" placeholder="2">\n            <input class="db" data-input="list" type="text" value="" placeholder="3">\n            <input class="db" data-input="list" type="text" value="" placeholder="4">\n            <input class="db" data-input="list" type="text" value="" placeholder="5">\n            <input class="db" data-input="list" type="text" value="" placeholder="6">\n            <input class="db" data-input="list" type="text" value="" placeholder="7">\n            <input class="db" data-input="list" type="text" value="" placeholder="8">\n            <input class="db" data-input="list" type="text" value="" placeholder="9">\n            <input class="db" data-input="list" type="text" value="" placeholder="10">\n          </section>\n        ';
+        section = '\n          <section data-section="' + selectSection + '-' + iterationNumb + '" class="section">\n          <p class="section__title">' + selectSection + '<span class="pl1  fw5">(10 max)</span></p>\n            <span class="section__remove" data-remove="' + selectSection + '-' + iterationNumb + '">&#10006;</span>\n            <label class="section__label">Text</label>\n            <input data-input="text" type="text" value="" placeholder="Here is the list:">\n            <label class="section__label">List</label>\n            <input class="db" data-input="list" type="text" value="" placeholder="1">\n            <input class="db" data-input="list" type="text" value="" placeholder="2">\n            <input class="db" data-input="list" type="text" value="" placeholder="3">\n            <input class="db" data-input="list" type="text" value="" placeholder="4">\n            <input class="db" data-input="list" type="text" value="" placeholder="5">\n            <input class="db" data-input="list" type="text" value="" placeholder="6">\n            <input class="db" data-input="list" type="text" value="" placeholder="7">\n            <input class="db" data-input="list" type="text" value="" placeholder="8">\n            <input class="db" data-input="list" type="text" value="" placeholder="9">\n            <input class="db" data-input="list" type="text" value="" placeholder="10">\n          </section>\n        ';
         break;
       case 'soundcloud':
-        section = '\n          <section data-section="' + selectSection + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <label class="section__label">Get relevant Type & ID from Soundcloud embed code</label>\n            <label class="section__label">Track embed example: <span class="ph1  bg-light-grey">tracks/442028544</span></label>\n            <label class="section__label">Playlist embed example: <span class="ph1  bg-light-grey">playlists/442028544</span></label>\n            <label class="section__label">Profile embed example: <span class="ph1  bg-light-grey">users/442028544</span></label>\n\n            <input data-input="url" type="text" value="">\n          </section>\n        ';
+        section = '\n          <section data-section="' + selectSection + '-' + iterationNumb + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '-' + iterationNumb + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <label class="section__label">Get relevant Type & ID from Soundcloud embed code</label>\n            <label class="section__label">Track embed example: <span class="ph1  bg-light-grey">tracks/442028544</span></label>\n            <label class="section__label">Playlist embed example: <span class="ph1  bg-light-grey">playlists/442028544</span></label>\n            <label class="section__label">Profile embed example: <span class="ph1  bg-light-grey">users/442028544</span></label>\n\n            <input data-input="url" type="text" value="">\n          </section>\n        ';
         break;
       case 'spotify':
-        section = '\n          <section data-section="' + selectSection + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <label class="section__label">URI</label>\n\n            <input data-input="uri" type="text" value="">\n          </section>\n        ';
+        section = '\n          <section data-section="' + selectSection + '-' + iterationNumb + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '-' + iterationNumb + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <label class="section__label">URI</label>\n\n            <input data-input="uri" type="text" value="">\n          </section>\n        ';
         break;
       case 'youtube':
-        section = '\n          <section data-section="' + selectSection + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <label class="section__label">Youtube embed example: <span class="ph1  bg-light-grey">k8jUprWj-Zo</span></label>\n            <input data-input="url" type="text" value="">\n          </section>\n        ';
+        section = '\n          <section data-section="' + selectSection + '-' + iterationNumb + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '-' + iterationNumb + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <label class="section__label">Youtube embed example: <span class="ph1  bg-light-grey">k8jUprWj-Zo</span></label>\n            <input data-input="url" type="text" value="">\n          </section>\n        ';
         break;
       case 'FacebookVideo':
-        section = '\n          <section data-section="' + selectSection + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <label class="section__label">FacebookVideo embed</label>\n            <input data-input="url" type="text" value="">\n          </section>\n        ';
+        section = '\n          <section data-section="' + selectSection + '-' + iterationNumb + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '-' + iterationNumb + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <label class="section__label">FacebookVideo embed</label>\n            <input data-input="url" type="text" value="">\n          </section>\n        ';
         break;
       case 'link':
-        section = '\n          <section data-section="' + selectSection + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <select data-input="linkType">\n              <option value="Soundcloud">Soundcloud</option>\n              <option value="Youtube">Youtube</option>\n              <option value="Twitter">Twitter</option>\n              <option value="Facebook">Facebook</option>\n              <option value="Instagram">Instagram</option>\n              <option value="Website">Website</option>\n            </select>\n            <br />\n            <label class="section__label">text</label>\n            <input data-input="text" type="text" value="" placeholder="XXX on Soundcloud">\n            <br />\n            <label class="section__label">URL</label>\n            <input data-input="url" type="url" value=""  placeholder="https://soundcloud.com/xxx">\n          </section>\n        ';
+        section = '\n          <section data-section="' + selectSection + '-' + iterationNumb + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '-' + iterationNumb + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <select data-input="linkType">\n              <option value="Soundcloud">Soundcloud</option>\n              <option value="Youtube">Youtube</option>\n              <option value="Twitter">Twitter</option>\n              <option value="Facebook">Facebook</option>\n              <option value="Instagram">Instagram</option>\n              <option value="Website">Website</option>\n            </select>\n            <br />\n            <label class="section__label">text</label>\n            <input data-input="text" type="text" value="" placeholder="XXX on Soundcloud">\n            <br />\n            <label class="section__label">URL</label>\n            <input data-input="url" type="url" value=""  placeholder="https://soundcloud.com/xxx">\n          </section>\n        ';
         break;
       default:
     }
 
     jsonGen.sectionsContainer.insertAdjacentHTML('beforeend', section);
     window.scrollTo(0, document.body.scrollHeight);
-    var removeElems = document.querySelectorAll('[data-remove]');
+
+    var removeElem = document.querySelector('[data-remove=' + selectSection + '-' + iterationNumb + ']');
+    jsonGen.removeElems.push(removeElem);
 
     // removes section
 
     var _loop = function _loop(i) {
-      removeElems[i].addEventListener('click', function () {
-        return jsonGen.removeSection(removeElems[i]);
+      jsonGen.removeElems[i].addEventListener('click', function () {
+        return jsonGen.removeSection(jsonGen.removeElems[i]);
       }, false);
     };
 
-    for (var i = 0; i < removeElems.length; i += 1) {
+    for (var i = 0; i < jsonGen.removeElems.length; i += 1) {
       _loop(i);
     }
   },
   removeSection: function removeSection(elem) {
     var elemVal = elem.getAttribute('data-remove');
     var target = document.querySelector('[data-section="' + elemVal + '"]');
-    console.log(target);
-    target.parentNode.removeChild(target);
+    if (elem && target) {
+      target.parentNode.removeChild(target);
+    }
   },
   cleanUtil: function cleanUtil(val) {
     // replace double spaces, tabs, newlines
