@@ -227,12 +227,12 @@ const jsonGen = {
           </section>
         `;
         break;
-      case 'embeddedFacebookVideo':
+      case 'FacebookVideo':
         section = `
           <section data-section="${selectSection}" class="section">
             <span class="section__remove" data-remove="${selectSection}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
-            <label class="section__label">embeddedFacebookVideo embed</label>
+            <label class="section__label">FacebookVideo embed</label>
             <input data-input="url" type="text" value="">
           </section>
         `;
@@ -450,7 +450,7 @@ const jsonGen = {
             }
           }`;
           break;
-        case 'embeddedFacebookVideo':
+        case 'FacebookVideo':
           openBody();
           json += `
           {

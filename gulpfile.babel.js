@@ -219,11 +219,16 @@ gulp.task('clean', () => {
     .pipe(clean());
 });
 
+gulp.task('robots', () => {
+  return gulp.src('./robots.txt')
+  .pipe(gulp.dest(pkg.paths.dist.root));
+});
+
 // Build
 // Run with '--production' for minified output
 
 gulp.task('build', () => {
-  const arr = ['scripts-watch', 'styles', 'twig-watch'];
+  const arr = ['scripts-watch', 'styles', 'twig-watch', 'robots'];
   if (util.env.docs) {
     arr.push('docs-watch');
   }

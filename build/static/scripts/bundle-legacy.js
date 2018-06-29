@@ -140,8 +140,8 @@ var jsonGen = {
       case 'youtube':
         section = '\n          <section data-section="' + selectSection + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <label class="section__label">Youtube embed example: <span class="ph1  bg-light-grey">k8jUprWj-Zo</span></label>\n            <input data-input="url" type="text" value="">\n          </section>\n        ';
         break;
-      case 'embeddedFacebookVideo':
-        section = '\n          <section data-section="' + selectSection + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <label class="section__label">embeddedFacebookVideo embed</label>\n            <input data-input="url" type="text" value="">\n          </section>\n        ';
+      case 'FacebookVideo':
+        section = '\n          <section data-section="' + selectSection + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <label class="section__label">FacebookVideo embed</label>\n            <input data-input="url" type="text" value="">\n          </section>\n        ';
         break;
       case 'link':
         section = '\n          <section data-section="' + selectSection + '" class="section">\n            <span class="section__remove" data-remove="' + selectSection + '">&#10006;</span>\n            <p class="section__title">' + selectSection + '</p>\n            <select data-input="linkType">\n              <option value="Soundcloud">Soundcloud</option>\n              <option value="Youtube">Youtube</option>\n              <option value="Twitter">Twitter</option>\n              <option value="Facebook">Facebook</option>\n              <option value="Instagram">Instagram</option>\n              <option value="Website">Website</option>\n            </select>\n            <br />\n            <label class="section__label">text</label>\n            <input data-input="text" type="text" value="" placeholder="XXX on Soundcloud">\n            <br />\n            <label class="section__label">URL</label>\n            <input data-input="url" type="url" value=""  placeholder="https://soundcloud.com/xxx">\n          </section>\n        ';
@@ -278,7 +278,7 @@ var jsonGen = {
           openBody();
           json += '\n          {\n            "section": {\n              "type": "' + type + '",\n              "url": "' + jsonGen.cleanUtil(thisSection.querySelector('[data-input="url"]').value) + '"\n            }\n          }';
           break;
-        case 'embeddedFacebookVideo':
+        case 'FacebookVideo':
           openBody();
           json += '\n          {\n            "section": {\n              "type": "' + type + '",\n              "url": "' + jsonGen.cleanUtil(thisSection.querySelector('[data-input="url"]').value) + '"\n            }\n          }';
           break;
