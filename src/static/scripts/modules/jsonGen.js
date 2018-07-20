@@ -21,7 +21,7 @@ const jsonGen = {
     switch (selectSection) {
       case 'heading':
         section = `
-          <section data-section="${selectSection}-${iterationNumb}" class="section">
+          <section data-section-type="${selectSection}" data-section="${selectSection}-${iterationNumb}" class="section">
             <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
             <input data-input="text" type="text" value="">
@@ -30,7 +30,7 @@ const jsonGen = {
         break;
       case 'paragraph':
         section = `
-          <section data-section="${selectSection}-${iterationNumb}" class="section">
+          <section data-section-type="${selectSection}" data-section="${selectSection}-${iterationNumb}" class="section">
             <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
             <textarea class="w-100" data-input="text" rows="4" cols="80" placeholder="1 section per paragraph; Line breaks do not take effect"></textarea>
@@ -39,7 +39,7 @@ const jsonGen = {
         break;
       case 'question':
         section = `
-          <section data-section="${selectSection}-${iterationNumb}" class="section">
+          <section data-section-type="${selectSection}" data-section="${selectSection}-${iterationNumb}" class="section">
             <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
             <input data-input="text" type="text" value="">
@@ -48,7 +48,7 @@ const jsonGen = {
         break;
       case 'answer':
         section = `
-          <section data-section="${selectSection}-${iterationNumb}" class="section">
+          <section data-section-type="${selectSection}" data-section="${selectSection}-${iterationNumb}" class="section">
             <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
             <textarea data-input="text" rows="4" cols="80" placeholder="1 section per paragraph; Line breaks do not take effect"></textarea>
@@ -57,7 +57,7 @@ const jsonGen = {
         break;
       case 'bulletList':
         section = `
-          <section data-section="${selectSection}-${iterationNumb}" class="section">
+          <section data-section-type="${selectSection}" data-section="${selectSection}-${iterationNumb}" class="section">
           <p class="section__title">${selectSection}<span class="pl1  fw5">(10 max)</span></p>
             <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <label class="section__label">Text</label>
@@ -78,7 +78,7 @@ const jsonGen = {
         break;
       case 'numberedList':
         section = `
-          <section data-section="${selectSection}-${iterationNumb}" class="section">
+          <section data-section-type="${selectSection}" data-section="${selectSection}-${iterationNumb}" class="section">
           <p class="section__title">${selectSection}<span class="pl1  fw5">(10 max)</span></p>
             <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <label class="section__label">Text</label>
@@ -99,7 +99,7 @@ const jsonGen = {
         break;
       case 'soundcloud':
         section = `
-          <section data-section="${selectSection}-${iterationNumb}" class="section">
+          <section data-section-type="${selectSection}" data-section="${selectSection}-${iterationNumb}" class="section">
             <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
             <label class="section__label">Get relevant Type & ID from Soundcloud embed code</label>
@@ -113,7 +113,7 @@ const jsonGen = {
         break;
       case 'spotify':
         section = `
-          <section data-section="${selectSection}-${iterationNumb}" class="section">
+          <section data-section-type="${selectSection}" data-section="${selectSection}-${iterationNumb}" class="section">
             <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
             <label class="section__label">URI</label>
@@ -124,7 +124,7 @@ const jsonGen = {
         break;
       case 'youtube':
         section = `
-          <section data-section="${selectSection}-${iterationNumb}" class="section">
+          <section data-section-type="${selectSection}" data-section="${selectSection}-${iterationNumb}" class="section">
             <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
             <label class="section__label">Youtube embed example: <span class="ph1  bg-light-grey">k8jUprWj-Zo</span></label>
@@ -134,7 +134,7 @@ const jsonGen = {
         break;
       case 'FacebookVideo':
         section = `
-          <section data-section="${selectSection}-${iterationNumb}" class="section">
+          <section data-section-type="${selectSection}" data-section="${selectSection}-${iterationNumb}" class="section">
             <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
             <label class="section__label">FacebookVideo embed</label>
@@ -144,7 +144,7 @@ const jsonGen = {
         break;
       case 'link':
         section = `
-          <section data-section="${selectSection}-${iterationNumb}" class="section">
+          <section data-section-type="${selectSection}" data-section="${selectSection}-${iterationNumb}" class="section">
             <span class="section__remove" data-remove="${selectSection}-${iterationNumb}">&#10006;</span>
             <p class="section__title">${selectSection}</p>
             <select data-input="linkType">
@@ -207,7 +207,7 @@ const jsonGen = {
 
     for (let i = 0; i < dataSections.length; i += 1) {
       const thisSection = dataSections[i];
-      const type = thisSection.getAttribute('data-section');
+      const type = thisSection.getAttribute('data-section-type');
       let list;
       let comma = ',';
 

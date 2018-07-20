@@ -32,40 +32,43 @@
         <div class="ph6-md  ph3  pv2  mb3  mw8  center">
           <p class="tac  f6  pt3  mb0">Fill out the sections as needed, add new sections & feel free to mix & match</p>
           <div data-sections-container>
-            <section data-section="url" class="section">
+            <section data-section-type="url" data-section="url" class="section">
               <p class="section__title">Article URL</p>
               <input data-input="text" type="text" placeholder="name-of-article-as-url"> </section>
-            <section data-section="title" class="section">
+            <section data-section-type="title" data-section="title" class="section">
               <p class="section__title">Article Title</p>
               <input data-input="text" type="text" placeholder="Example Article Title"> </section>
-            <section data-section="description" class="section">
+            <section data-section-type="description" data-section="description" class="section">
               <p class="section__title">Artice Description</p>
               <textarea class="w-100" data-input="text" rows="4" cols="80" placeholder="1 section per paragraph; Line breaks do not take effect"></textarea>
             </section>
-            <section data-section="created" class="section">
+            <section data-section-type="created" data-section="created" class="section">
               <p class="section__title">Created Date</p>
               <label class="section__label">Example: 2018-06-04T12:00:00.002Z</label>
               <input data-input="text" type="text"> </section>
-            <section data-section="author" class="section">
+            <section data-section-type="author" data-section="author" class="section">
               <p class="section__title">Author</p>
               <select data-input="select">
-                <option value="Dan Jones">Dan Jones</option>
-                <option value="Harry Taylor">Harry Taylor</option>
-                <option value="Dayle Hamers">Dayle Hamers</option>
-                <option value="Kieran May">Kieran May</option>
-                <option value="Sam Langley">Sam Langley</option>
-                <option value="Hajo Krijger">Hajo Krijger</option>
+                <option value="dan-jones">dan-jones</option>
+                <option value="harry-taylor">harry-taylor</option>
+                <option value="dayle-hamers">dayle-hamers</option>
+                <option value="kieran-may">kieran-may</option>
+                <option value="sam-langley">sam-langley</option>
+                <option value="hajo-krijger">hajo-krijger</option>
+                <option value="rosh-parmar">rosh-parmar</option>
+                <option value="blair-mcgloiry">blair-mcgloiry</option>
+                <option value="keelan-rushby">keelan-rushby</option>
               </select>
             </section>
-            <section data-section="img" class="section">
+            <section data-section-type="img" data-section="img" class="section">
               <p class="section__title">Main Image</p>
               <input data-input="text" type="text" placeholder="img-name.jpg"> </section>
-            <section data-section="category" class="section">
+            <section data-section-type="category" data-section="category" class="section">
               <p class="section__title">Category</p>
               <select data-input="select">
-                <option value="Insights">Insights</option>
-                <option value="Interviews">Interviews</option>
-                <option value="News">News</option>
+                <option value="insights">insights</option>
+                <option value="interviews">interviews</option>
+                <option value="news">news</option>
               </select>
             </section>
           </div>
